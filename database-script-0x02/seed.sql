@@ -1,62 +1,72 @@
--- Inserting into User table
-INSERT INTO User (user_id, first_name, last_name, email, password_hash, phone_number, role, created_at)
-VALUES ('a1b2c3d4-e5f6-7890-1234-567890abcdef', 'Alice', 'Smith', 'alice.smith@example.com', 'hashed_password_1', '+1-555-123-4567', 'guest', '2025-05-10 10:00:00');
+-- SEED USERS DATAT
+-- INSERT INTO Users (user_id, first_name, last_name, email, password_hash, phone_number, role)
+-- VALUES
+-- (UUID(), 'Aisha', 'Yusuf', 'aisha.yusuf@example.com', 'hashed_pw_01', '08031234567', 'guest'),
+-- (UUID(), 'Michael', 'Adekunle', 'michael.adekunle@example.com', 'hashed_pw_02', '08145678901', 'host'),
+-- (UUID(), 'Chinonso', 'Okafor', 'chinonso.okafor@example.com', 'hashed_pw_03', NULL, 'guest'),
+-- (UUID(), 'Grace', 'Olowu', 'grace.olowu@example.com', 'hashed_pw_04', '09022334455', 'admin'),
+-- (UUID(), 'Ibrahim', 'Sule', 'ibrahim.sule@example.com', 'hashed_pw_05', '07055667788', 'host');
 
-INSERT INTO User (user_id, first_name, last_name, email, password_hash, role)
-VALUES ('f9e8d7c6-b5a4-3210-fedc-ba9876543210', 'Bob', 'Johnson', 'bob.johnson@example.com', 'hashed_password_2', 'host');
+-- SEED PROPERTIES DATA
+-- INSERT INTO Property (property_id, host_id, name, description, location, price_per_night)
+-- VALUES
+-- (UUID(), 'b6c2ee1b-3102-11f0-8163-a0510b1d0f29', 'Lagos Lagoon View', 'A cozy apartment with a beautiful view of the lagoon in Lekki Phase 1.', 'Lekki, Lagos', 15000.00),
+-- (UUID(), 'b6c2ee1b-3102-11f0-8163-a0510b1d0f29', 'Abuja City Loft', 'Modern and spacious loft in the heart of Abuja with free Wi-Fi and AC.', 'Wuse, Abuja', 25000.00),
+-- (UUID(), 'b6c2fb2f-3102-11f0-8163-a0510b1d0f29', 'Ocean Breeze Villa', 'Luxury villa just 5 minutes from Tarkwa Bay beach.', 'Victoria Island, Lagos', 45000.00),
+-- (UUID(), 'b6c2fb2f-3102-11f0-8163-a0510b1d0f29', 'Ibadan Cozy Studio', 'Affordable studio perfect for students and travelers near UI.', 'Agbowo, Ibadan', 8000.00);
 
-INSERT INTO User (user_id, first_name, last_name, email, password_hash, role, created_at)
-VALUES ('11223344-5566-7788-9900-aabbccddeeff', 'Charlie', 'Brown', 'charlie.brown@example.com', 'hashed_password_3', 'admin', '2025-05-11 12:00:00');
+-- SEED BOOKINGS
+-- INSERT INTO Booking (booking_id, property_id, user_id, start_date, end_date, total_price, status)
+-- VALUES
+-- (UUID(), '8a5f674e-3103-11f0-8163-a0510b1d0f29', 'b6c2e165-3102-11f0-8163-a0510b1d0f29', '2025-06-01', '2025-06-05', 60000.00, 'confirmed'),
 
-INSERT INTO User (user_id, first_name, last_name, email, password_hash, phone_number, role)
-VALUES ('98765432-10fe-dcba-9876-543210fedcba', 'Diana', 'Miller', 'diana.miller@example.com', 'hashed_password_4', '+234-801-234-5678', 'guest');
+-- (UUID(), '8a5f75ae-3103-11f0-8163-a0510b1d0f29', 'b6c2f2d7-3102-11f0-8163-a0510b1d0f29', '2025-06-10', '2025-06-12', 90000.00, 'pending'),
 
--- Inserting into Property table (referencing User as host)
-INSERT INTO Property (property_id, host_id, name, description, location, price_per_night, created_at)
-VALUES ('01234567-89ab-cdef-0123-456789abcdef', 'f9e8d7c6-b5a4-3210-fedc-ba9876543210', 'Cozy Apartment in Lagos', 'A comfortable one-bedroom apartment with city views.', 'Lagos, Nigeria', 50.00, '2025-05-10 11:00:00');
+-- (UUID(), '8a5f79b6-3103-11f0-8163-a0510b1d0f29', 'b6c2f60c-3102-11f0-8163-a0510b1d0f29', '2025-07-01', '2025-07-04', 24000.00, 'confirmed'),
 
-INSERT INTO Property (property_id, host_id, name, description, location, price_per_night)
-VALUES ('fedcba98-7654-3210-fedc-ba9876543210', 'f9e8d7c6-b5a4-3210-fedc-ba9876543210', 'Luxury Villa in Abuja', 'A spacious villa with a private pool and garden.', 'Abuja, Nigeria', 120.50);
+-- (UUID(), '8a5f70b8-3103-11f0-8163-a0510b1d0f29', 'b6c2ee1b-3102-11f0-8163-a0510b1d0f29', '2025-07-10', '2025-07-12', 50000.00, 'cancelled'),
 
-INSERT INTO Property (property_id, host_id, name, description, location, price_per_night, created_at)
-VALUES ('abcdef01-2345-6789-abcd-ef0123456789', 'f9e8d7c6-b5a4-3210-fedc-ba9876543210', 'Beachfront Studio in Calabar', 'A modern studio apartment right on the beach.', 'Calabar, Nigeria', 75.00, '2025-05-11 09:00:00');
+-- (UUID(), '8a5f674e-3103-11f0-8163-a0510b1d0f29', 'b6c2fb2f-3102-11f0-8163-a0510b1d0f29', '2025-07-15', '2025-07-18', 45000.00, 'confirmed');
 
--- Inserting into Booking table (referencing User and Property)
-INSERT INTO Booking (booking_id, property_id, user_id, start_date, end_date, total_price, status, created_at)
-VALUES ('1a2b3c4d-e5f6-7890-1234-567890abcdef', '01234567-89ab-cdef-0123-456789abcdef', 'a1b2c3d4-e5f6-7890-1234-567890abcdef', '2025-05-15', '2025-05-18', 150.00, 'confirmed', '2025-05-11 13:00:00');
 
-INSERT INTO Booking (booking_id, property_id, user_id, start_date, end_date, total_price, status)
-VALUES ('fedcba98-7654-3210-fedc-ba9876543210', 'fedcba98-7654-3210-fedc-ba9876543210', '98765432-10fe-dcba-9876-543210fedcba', '2025-06-01', '2025-06-07', 843.50, 'pending');
+-- SEED PAYMENTS
+-- INSERT INTO Payment (payment_id, booking_id, amount, payment_method, payment_date)
+-- VALUES
+-- (UUID(), 'aceff2cc-3105-11f0-8163-a0510b1d0f29', 60000.00, 'credit_card', '2025-05-10'),
 
-INSERT INTO Booking (booking_id, property_id, user_id, start_date, end_date, total_price, status, created_at)
-VALUES ('abcdef01-2345-6789-abcd-ef0123456789', 'abcdef01-2345-6789-abcd-ef0123456789', 'a1b2c3d4-e5f6-7890-1234-567890abcdef', '2025-05-25', '2025-05-27', 150.00, 'confirmed', '2025-05-11 14:00:00');
+-- (UUID(), 'acf0038b-3105-11f0-8163-a0510b1d0f29', 90000.00, 'paypal', '2025-05-12'),
 
--- Inserting into Payment table (referencing Booking)
-INSERT INTO Payment (payment_id, booking_id, amount, payment_date, payment_method)
-VALUES ('11aa22bb-33cc-44dd-55ee-ff0011223344', '1a2b3c4d-e5f6-7890-1234-567890abcdef', 150.00, '2025-05-11 13:15:00', 'credit_card');
+-- (UUID(), 'acf00b20-3105-11f0-8163-a0510b1d0f29', 24000.00, 'stripe', '2025-06-25'),
 
-INSERT INTO Payment (payment_id, booking_id, amount, payment_method)
-VALUES ('aabbccdd-eeff-0011-2233-445566778899', 'fedcba98-7654-3210-fedc-ba9876543210', 400.00, 'paypal'); -- Partial payment
+-- (UUID(), 'acf0107e-3105-11f0-8163-a0510b1d0f29', 50000.00, 'credit_card', '2025-06-30'),
 
-INSERT INTO Payment (payment_id, booking_id, amount, payment_date, payment_method)
-VALUES ('99887766-5544-3322-1100-aabbccddeeff', 'fedcba98-7654-3210-fedc-ba9876543210', 443.50, '2025-05-28 10:00:00', 'credit_card'); -- Remaining payment
+-- (UUID(), 'acf0159e-3105-11f0-8163-a0510b1d0f29', 45000.00, 'paypal', '2025-07-01');
 
--- Inserting into Review table (referencing User and Property)
+-- SEED REVIEWS
 INSERT INTO Review (review_id, property_id, user_id, rating, comment, created_at)
-VALUES ('a1b2c3d4-e5f6-7890-1234-567890abcdef', '01234567-89ab-cdef-0123-456789abcdef', 'a1b2c3d4-e5f6-7890-1234-567890abcdef', 4, 'Great location and comfortable stay!', '2025-05-19 09:00:00');
+VALUES
+(UUID(), '8a5f674e-3103-11f0-8163-a0510b1d0f29', 'b6c2e165-3102-11f0-8163-a0510b1d0f29', 4, 'Beautiful view and nice ambiance. The host was very welcoming!', '2025-05-14 21:55:00'),
 
-INSERT INTO Review (review_id, property_id, user_id, rating, comment)
-VALUES ('fedcba98-7654-3210-fedc-ba9876543210', '01234567-89ab-cdef-0123-456789abcdef', '98765432-10fe-dcba-9876-543210fedcba', 5, 'Absolutely loved the villa! The pool was fantastic.');
+(UUID(), '8a5f75ae-3103-11f0-8163-a0510b1d0f29', 'b6c2f2d7-3102-11f0-8163-a0510b1d0f29', 5, 'The villa was amazing! Loved the proximity to the beach. Highly recommend.', '2025-05-14 21:55:00'),
 
-INSERT INTO Review (review_id, property_id, user_id, rating, created_at)
-VALUES ('12345678-90ab-cdef-1234-567890abcdef', 'abcdef01-2345-6789-abcd-ef0123456789', 'a1b2c3d4-e5f6-7890-1234-567890abcdef', 3, 'Okay for a short stay.', '2025-05-27 15:00:00');
+(UUID(), '8a5f79b6-3103-11f0-8163-a0510b1d0f29', 'b6c2f60c-3102-11f0-8163-a0510b1d0f29', 3, 'The studio was okay, but there was some noise from the street at night. Otherwise, it was convenient.', '2025-05-14 21:55:00'),
 
--- Inserting into Message table (referencing User as sender and recipient)
+(UUID(), '8a5f70b8-3103-11f0-8163-a0510b1d0f29', 'b6c2ee1b-3102-11f0-8163-a0510b1d0f29', 4, 'Nice location and a comfortable space. The only issue was with the Wi-Fi connection.', '2025-05-14 21:55:00'),
+
+(UUID(), '8a5f674e-3103-11f0-8163-a0510b1d0f29', 'b6c2fb2f-3102-11f0-8163-a0510b1d0f29', 5, 'Wonderful experience! The apartment was clean and exactly as described. Will definitely come back.', '2025-05-14 21:55:00');
+
+
+-- SEED MESSAGES
 INSERT INTO Message (message_id, sender_id, recipient_id, message_body, sent_at)
-VALUES ('aabbccdd-eeff-0011-2233-445566778899', 'a1b2c3d4-e5f6-7890-1234-567890abcdef', 'f9e8d7c6-b5a4-3210-fedc-ba9876543210', 'Hi Bob, I have a question about your Lagos apartment.', '2025-05-11 15:00:00');
+VALUES
+(UUID(), 'b6c2e165-3102-11f0-8163-a0510b1d0f29', 'b6c2f2d7-3102-11f0-8163-a0510b1d0f29', 'Hey, I wanted to ask if the villa is available for next weekend.', '2025-05-14 21:56:00'),
 
-INSERT INTO Message (message_id, sender_id, recipient_id, message_body)
-VALUES ('99887766-5544-3322-1100-aabbccddeeff', 'f9e8d7c6-b5a4-3210-fedc-ba9876543210', 'a1b2c3d4-e5f6-7890-1234-567890abcdef', 'Sure, Alice, what would you like to know?');
+(UUID(), 'b6c2f2d7-3102-11f0-8163-a0510b1d0f29', 'b6c2e165-3102-11f0-8163-a0510b1d0f29', 'Yes, it is available! Let me know if you need more details.', '2025-05-14 21:57:00'),
 
-INSERT INTO Message (message_id, sender_id, recipient_id, message_body, sent_at)
-VALUES ('123abc45-def6-7890-1234-567890abcdef', '11223344-5566-7788-9900-aabbccddeeff', 'f9e8d7c6-b5a4-3210-fedc-ba9876543210', 'Admin notification: A new property has been listed.', '2025-05-11 16:00:00');
+(UUID(), 'b6c2f60c-3102-11f0-8163-a0510b1d0f29', 'b6c2fb2f-3102-11f0-8163-a0510b1d0f29', 'I have a question regarding the checkout time. What time do we need to leave on the last day?', '2025-05-14 21:58:00'),
+
+(UUID(), 'b6c2fb2f-3102-11f0-8163-a0510b1d0f29', 'b6c2f60c-3102-11f0-8163-a0510b1d0f29', 'Checkout time is at 11 AM. Let me know if you need any further assistance!', '2025-05-14 21:59:00'),
+
+(UUID(), 'b6c2ee1b-3102-11f0-8163-a0510b1d0f29', 'b6c2fb2f-3102-11f0-8163-a0510b1d0f29', 'Just confirming that the booking is all set for next week. Excited!', '2025-05-14 21:59:00'),
+
+(UUID(), 'b6c2fb2f-3102-11f0-8163-a0510b1d0f29', 'b6c2ee1b-3102-11f0-8163-a0510b1d0f29', 'Yes, everything is set! Looking forward to hosting you.', '2025-05-14 22:00:00');
