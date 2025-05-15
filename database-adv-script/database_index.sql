@@ -1,4 +1,4 @@
-EXPLAIN SELECT
+EXPLAIN ANALYZE SELECT
     P.property_id,
     P.name  AS property_name,
     P.description,
@@ -15,7 +15,7 @@ ORDER BY
 CREATE INDEX idx_property_host on Property (host_id);
 CREATE INDEX idx_property_name ON Property (name);
 
-EXPLAIN SELECT
+EXPLAIN ANALYZE SELECT
     P.property_id,
     P.name  AS property_name,
     P.description,
