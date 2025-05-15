@@ -58,7 +58,9 @@ SELECT
 FROM
     Property AS P
 LEFT JOIN
-    Review AS R ON P.property_id = R.property_id;
+    Review AS R ON P.property_id = R.property_id
+ORDER BY
+    property_name ASC;
 
 -- FULL 0UTER JOIN
 
@@ -73,3 +75,8 @@ SELECT *
 FROM Users 
 RIGHT JOIN 
     Booking ON Users.user_id = Booking.user_id;
+
+SELECT *
+FROM Users
+FULL OUTER JOIN
+    Booking ON Users.user_id = Booking.user_id
