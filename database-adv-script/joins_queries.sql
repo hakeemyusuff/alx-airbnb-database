@@ -45,5 +45,31 @@ SELECT
 FROM
     Property AS P
 LEFT JOIN
-    Booking AS B ON P.property_id = B.property_id
+    Booking AS B ON P.property_id = B.property_id;
 
+
+SELECT
+    P.property_id,
+    P.name  AS property_name,
+    P.description,
+    P.price_per_night,
+    R.rating,
+    R.comment
+FROM
+    Property AS P
+LEFT JOIN
+    Review AS R ON P.property_id = R.property_id;
+
+-- FULL 0UTER JOIN
+
+SELECT * 
+FROM Users 
+LEFT JOIN 
+    Booking ON Users.user_id = Booking.user_id
+
+UNION
+
+SELECT * 
+FROM Users 
+RIGHT JOIN 
+    Booking ON Users.user_id = Booking.user_id;
