@@ -6,8 +6,6 @@ SELECT
     b.status AS booking_status,
     u.user_id,
     u.first_name,
-    u.last_name,
-    u.email,
     p.property_id,
     p.name AS property_name,
     p.location,
@@ -21,8 +19,10 @@ JOIN
 JOIN
     Property AS p ON b.property_id = p.property_id
 LEFT JOIN
-    Payment AS pm ON b.booking_id = pm.booking_id;
-
+    Payment AS pm ON b.booking_id = pm.booking_id
+WHERE
+    b.start_date >= '2025-06-01' AND b.end_date <= '2025-06-30'
+    AND b.status = 'confirmed';
 EXPLAIN SELECT
     b.booking_id,
     b.start_date,
@@ -47,6 +47,7 @@ JOIN
     Property AS p ON b.property_id = p.property_id
 LEFT JOIN
     Payment AS pm ON b.booking_id = pm.booking_id;
+
 
 EXPLAIN SELECT
     b.booking_id,
